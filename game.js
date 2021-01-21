@@ -1,3 +1,25 @@
+function DisplayAlert() {
+    var newLine = "\r\n"
+    var msg = "Rules Of the Game :-";
+    msg += newLine;
+    msg += "1. First Look at the button pressed by the AI.";
+    msg += newLine;
+    msg += "2. Remember the sequence of button been pressed.";
+    msg+= newLine;
+    msg += "3. You have to press the button in correct sequence each time along with the button pressed by AI on that particular level.";
+    msg+= newLine;
+    msg+= newLine;
+    msg += "        !!!!  ENJOY  !!!!       ";
+    alert(msg);
+ }
+
+var rule = false;
+
+if(!started)
+{
+    DisplayAlert();  
+    rule = true;
+}
 
 var buttonColours = ["red", "blue", "green", "yellow"];
 
