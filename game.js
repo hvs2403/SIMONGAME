@@ -10,6 +10,15 @@ function DisplayAlert() {
     msg+= newLine;
     msg+= newLine;
     msg += "        !!!!  ENJOY  !!!!       ";
+    msg+= newLine;
+    msg+= newLine;
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        msg += "    Tab on the screen (except the button area) to Start The  game      ";
+    }
+    else
+    {
+        msg += "    Click on the screen (except the button area) to Start The game     ";
+    }
     alert(msg);
  }
 
@@ -39,6 +48,16 @@ $(document).keypress(function () {
     }
 });
 
+$(document).on("tab", function () { 
+
+    if(!started)
+    {
+        $("#level-title").text("Level" + level);
+        nextSequence();
+        started = true;
+    }
+});
+
 $(".btn").click(function () { 
     var userChosenColour = $(this).attr("id");
     userClickedPattern.push(userChosenColour);
@@ -47,8 +66,6 @@ $(".btn").click(function () {
 
     checkAnswer(userClickedPattern.length - 1);
 });
-
-//tapping action added in javascript code
 
 $(".btn").on("tab", function () { 
     var userChosenColour = $(this).attr("id");
