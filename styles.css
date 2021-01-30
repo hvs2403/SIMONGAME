@@ -76,10 +76,17 @@ body {
 
 */
 
-/* footer section */
+/* footer section 
 
 #footer{
   margin-top: 3%;
   text-align: center;
   color: white;
+}
+*/
+#footer{
+  bottom: 10px;
+  text-align: center;
+  color: white;
+  margin-top: 150px;
 }
