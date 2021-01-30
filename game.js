@@ -48,16 +48,6 @@ $(document).keypress(function () {
     }
 });
 
-$(document).on("tab", function () { 
-
-    if(!started)
-    {
-        $("#level-title").text("Level" + level);
-        nextSequence();
-        started = true;
-    }
-});
-
 $(".btn").click(function () { 
     var userChosenColour = $(this).attr("id");
     userClickedPattern.push(userChosenColour);
@@ -65,6 +55,16 @@ $(".btn").click(function () {
     animatePress(userChosenColour);
 
     checkAnswer(userClickedPattern.length - 1);
+});
+
+$(body).on("tap", function () { 
+
+    if(!started)
+    {
+        $("#level-title").text("Level" + level);
+        nextSequence();
+        started = true;
+    }
 });
 
 $(".btn").on("tab", function () { 
