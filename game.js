@@ -48,6 +48,17 @@ $(".btn").click(function () {
     checkAnswer(userClickedPattern.length - 1);
 });
 
+//tapping action added in javascript code
+
+$(".btn").on("tab", function () { 
+    var userChosenColour = $(this).attr("id");
+    userClickedPattern.push(userChosenColour);
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+
+    checkAnswer(userClickedPattern.length - 1);
+});
+
 function nextSequence()
 {
     userClickedPattern = [];
