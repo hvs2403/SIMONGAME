@@ -12,15 +12,10 @@ function DisplayAlert() {
     msg += "        !!!!  ENJOY  !!!!       ";
     msg+= newLine;
     msg+= newLine;
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        msg += "    Tab on the screen (except the button area) to Start The  game      ";
-    }
-    else
-    {
-        msg += "    Click on the screen (except the button area) to Start The game     ";
-    }
     alert(msg);
  }
+
+
 
 var rule = false;
 
@@ -38,15 +33,33 @@ var userClickedPattern = [];
 var started = false
 var level = 0;
 
-$(document).keypress(function () { 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    document.getElementById("level-title").innerHTML = "Tab on the screen (except the button area) to Start The  game";
+    document.getElementById("startButton").classList.remove("btnpc");
+    document.getElementById("startButton").classList.add("btns");
 
-    if(!started)
-    {
-        $("#level-title").text("Level" + level);
-        nextSequence();
-        started = true;
-    }
-});
+    $(document).on("tab", function () { 
+
+        if(!started)
+        {
+            $("#level-title").text("Level" + level);
+            nextSequence();
+            started = true;
+        }
+    });
+    
+}
+else{
+    $(document).keypress(function () { 
+
+        if(!started)
+        {
+            $("#level-title").text("Level" + level);
+            nextSequence();
+            started = true;
+        }
+    });
+}
 
 $(".btn").click(function () { 
     var userChosenColour = $(this).attr("id");
@@ -55,16 +68,6 @@ $(".btn").click(function () {
     animatePress(userChosenColour);
 
     checkAnswer(userClickedPattern.length - 1);
-});
-
-$(body).on("tap", function () { 
-
-    if(!started)
-    {
-        $("#level-title").text("Level" + level);
-        nextSequence();
-        started = true;
-    }
 });
 
 $(".btn").on("tab", function () { 
